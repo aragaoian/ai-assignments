@@ -1,8 +1,8 @@
 import joblib
 from pandas import DataFrame
 
-LABEL_ENCODER = joblib.load("models\label_encoder.joblib")
-STD_SCALER = joblib.load("models\std_scaler.joblib")
+LABEL_ENCODER = joblib.load(r"models\label_encoder.joblib")
+STD_SCALER = joblib.load(r"models\std_scaler.joblib")
 
 
 def pre_processing(data: DataFrame) -> DataFrame:

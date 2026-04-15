@@ -2,25 +2,22 @@ import streamlit as st
 import pandas as pd
 from typing import Optional
 
+"""
+Teste 1: [-0.70315815 -0.30124226  0.98601743  0.79845092  0.59514195  0.46244996] -> 3
+Teste 2: [ 3.27109924 -0.30646981  0.99554703  0.59159227  1.24436026  0.69351375] -> 1
+Teste 124: [-0.56394453 -0.60279208 -0.39234684  1.0237481   0.79797278  0.88306394] -> 5
+"""
+
 
 def load_data() -> tuple[Optional[pd.DataFrame], bool]:
+    """Usar somente os features selecionados na EDA"""
     with st.form("input_form"):
-        area = st.number_input("Area", min_value=0, step=1, value=0)
-        perimeter = st.number_input("Perimeter", value=0.0)
-        major_axis_length = st.number_input("MajorAxisLength", value=0.0)
-        minor_axis_length = st.number_input("MinorAxisLength", value=0.0)
-        aspect_ratio = st.number_input("AspectRatio", value=0.0)
-        eccentricity = st.number_input("Eccentricity", value=0.0)
-        convex_area = st.number_input("ConvexArea", min_value=0, value=0)
-        equiv_diameter = st.number_input("EquivDiameter", value=0.0)
-        extent = st.number_input("Extent", value=0.0)
-        solidity = st.number_input("Solidity", value=0.0)
-        roundness = st.number_input("Roundness", value=0.0)
-        compactness = st.number_input("Compactness", value=0.0)
-        shape_factor1 = st.number_input("ShapeFactor1", value=0.0)
-        shape_factor2 = st.number_input("ShapeFactor2", value=0.0)
-        shape_factor3 = st.number_input("ShapeFactor3", value=0.0)
-        shape_factor4 = st.number_input("ShapeFactor4", value=0.0)
+        area = st.number_input("Area", value=-0.70315815)
+        eccentricity = st.number_input("Eccentricity", value=-0.30124226)
+        extent = st.number_input("Extent", value=0.98601743)
+        solidity = st.number_input("Solidity", value=0.79845092)
+        roundness = st.number_input("Roundness", value=0.59514195)
+        shape_factor4 = st.number_input("ShapeFactor4", value=0.46244996)
 
         submitted = st.form_submit_button("Gerar predição", type="primary")
 
@@ -30,20 +27,10 @@ def load_data() -> tuple[Optional[pd.DataFrame], bool]:
     data = [
         {
             "Area": int(area),
-            "Perimeter": float(perimeter),
-            "MajorAxisLength": float(major_axis_length),
-            "MinorAxisLength": float(minor_axis_length),
-            "AspectRatio": float(aspect_ratio),
             "Eccentricity": float(eccentricity),
-            "ConvexArea": int(convex_area),
-            "EquivDiameter": float(equiv_diameter),
             "Extent": float(extent),
-            "Solidity": float(solidity),
             "Roundness": float(roundness),
-            "Compactness": float(compactness),
-            "ShapeFactor1": float(shape_factor1),
-            "ShapeFactor2": float(shape_factor2),
-            "ShapeFactor3": float(shape_factor3),
+            "Solidity": float(solidity),
             "ShapeFactor4": float(shape_factor4),
         }
     ]
